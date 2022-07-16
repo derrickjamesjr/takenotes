@@ -25,5 +25,9 @@ app.get('/api/notes', (req, res) => {
 });
 app.post('/api/notes', (req, res) => {
     console.log(req.body);
-})
+    res.json(req.body);
+
+    fs.appendFile('./db/db.json',JSON.stringify(req.body, null, 2), (err) => {
+        if (err) console.log(error)})
+});
 app.listen(PORT, () => {console.log(`Server running on http://localhost:${PORT}`)});
